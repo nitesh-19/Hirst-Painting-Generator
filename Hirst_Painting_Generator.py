@@ -4,7 +4,6 @@ from random import randint
 import colorgram
 
 
-
 class Generator:
 
     def __init__(self):
@@ -19,11 +18,18 @@ class Generator:
         colors = colorgram.extract(path, number_of_colors)
 
         list_of_rgb = []
-        for index in range(number_of_colors):
+        for index in range(len(colors)):
             list_of_rgb.append(tuple(colors[index].rgb))
         return list_of_rgb
 
     def generate_painting(self, list_of_rgb=None):
+        dots_in_x = 14
+        dots_in_y = 8
+        step = 70
+        distance_in_x = dots_in_x * step
+        distance_in_y = dots_in_y * step
+        angle = -90
+
         if list_of_rgb is None:
             list_of_rgb = [
                 (237, 244, 239), (238, 241, 246), (218, 147, 85), (220, 78, 58), (44, 93, 146),
@@ -34,13 +40,6 @@ class Generator:
                 (234, 172, 160),
                 (165, 210, 190), (151, 209, 221)]
 
-        dots_in_x = 14
-        dots_in_y = 8
-        step = 70
-        distance_in_x = dots_in_x * step
-        distance_in_y = dots_in_y * step
-
-        angle = -90
         turtle.colormode(255)
         self.tim = Turtle()
 
@@ -64,5 +63,4 @@ class Generator:
         self.tim.hideturtle()
 
         ts.getcanvas().postscript(file="output.eps")
-
         screen.exitonclick()

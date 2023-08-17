@@ -24,6 +24,7 @@ while consent != "n":
         my_generator.generate_painting(list_of_rgb=list_of_rgb)
     elif response == 'n':
         my_generator.generate_painting(list_of_rgb=None)
+
         should_randomize = input("Randomize colors? (y/n): ")
         # turtle.bye()
         while should_randomize == "y":
